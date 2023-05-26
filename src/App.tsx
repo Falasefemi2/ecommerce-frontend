@@ -1,14 +1,11 @@
 import Inspx from "inspx"
+import Logo from "./components/icons/logo"
 
 const App = () => {
   return (
     <div className="App">
       <Inspx>
-      <div className=" text-3xl text-marian-blue">Hello WorldI</div>
-      <div className=" text-3xl text-red">Hello World</div>
-      <div className=" text-3xl text-sea-salt">Hello World</div>
-      <div className=" text-3xl text-aquamarine">Hello World</div>
-      <div className=" text-3xl text-marian-blue">Hello World</div>
+        <Logo />
       </Inspx>
     </div>
   )
