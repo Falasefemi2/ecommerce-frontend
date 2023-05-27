@@ -3,6 +3,7 @@ import Root from "./routes/Root"
 import Home from "./pages/Home"
 import Cart from "./pages/Cart"
 import Shop from "./pages/Shop"
+import ProductDetails from "./pages/ProductDetails"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />
+      },
+      {
+        path: "/shop/:id",
+        element: <ProductDetails />
       }
     ]
   }
