@@ -10,10 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.7",
+    "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "inspx": "0.0.1-alpha.6",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.2",
+    "sort-by": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

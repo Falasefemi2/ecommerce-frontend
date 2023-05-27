@@ -1,13 +1,33 @@
-import Inspx from "inspx"
-import Logo from "./components/icons/logo"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Root from "./routes/Root"
+import Home from "./pages/Home"
+import Cart from "./pages/Cart"
+import Shop from "./pages/Shop"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/cart",
+        element: <Cart />
+      },
+      {
+        path: "/shop",
+        element: <Shop />
+      }
+    ]
+  }
+])
 
 const App = () => {
   return (
-    <div className="App">
-      <Inspx>
-        <Logo />
-      </Inspx>
-    </div>
+    <RouterProvider router={router} />
   )
 }
 
