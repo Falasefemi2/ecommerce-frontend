@@ -5,7 +5,7 @@ import useGlobalStore from "../store"
 
 
 const Cart = () => {
-  const { cart } = useGlobalStore()
+  const { cart, addItemToCart, removeItemFromCart } = useGlobalStore()
   return (
     <section className="mx-[50px]">
       <Text variant="heading-one" className="my-[82px]">
@@ -29,11 +29,25 @@ const Cart = () => {
                 </div>
 
                 <div className="mt-[124px]  flex items-center space-x-7">
-                  <button>
+                  <button
+                    onClick={() => {
+                      removeItemFromCart(cartItem)
+                    }}
+                  >
                     <Icon name="minus-icon" />
                   </button>
                   <span>{cartItem.quantity}</span>
-                  <button>
+                  <button
+                    onClick={() => {
+                      addItemToCart({
+                        image: cartItem.image,
+                        name: cartItem.name,
+                        price: cartItem.price,
+                        product: cartItem.product,
+                      })
+
+                    }}
+                  >
                     <Icon name="plus-icon" />
                   </button>
                 </div>
@@ -47,12 +61,14 @@ const Cart = () => {
       </div>
       <div className="flex items-center justify-between mb-[82px]">
         <Text variant="subheading-two">Subtotal</Text>
-        <Text variant="subheading-two">Total</Text>
+        <Text variant="subheading-two">USD $</Text>
       </div>
       <Button
         className="mb-[180px] w-full"
         size="large"
+        onClick={() => {
 
+        }}
       >
         Proceed to Check out
       </Button>
