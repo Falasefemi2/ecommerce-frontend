@@ -1,14 +1,17 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link} from "react-router-dom"
 import axios from "../api/axios"
 import Button from "../components/Button"
 import Text from "../components/Test"
 import { useQuery } from "@tanstack/react-query"
+import useGlobalStore from "../store"
+import { toast } from "react-hot-toast"
 
 
 
 
 const Shop = () => {
-  const navigate = useNavigate()
+
+  const {addItemToCart} = useGlobalStore()
 
   const getProducts = (): Promise<IProduct[]> =>
     axios.get("/products").then((response) => response.data)
@@ -40,7 +43,7 @@ const Shop = () => {
         <div className="grid grid-cols-3 gap-[38px] mb-[180px]">
           {data?.map((prodItem) => (
             <div key={prodItem._id}>
-              <Link to={""}>
+              <Link to={`/shop/${prodItem._id}`}>
                 <div className="rounded-[18px]">
                   <img src={prodItem.image} alt="" width={368}
                     height={368}
@@ -52,7 +55,14 @@ const Shop = () => {
                 </Text>
                 <Text variant="body-three">$ {prodItem.price}</Text>
                 <Button size="small" className="mt-7" onClick={() => {
-                  navigate(`/shop/${prodItem._id}`)
+                  const cartItem: RawCartItem = {
+                    image: prodItem.image,
+                    name: prodItem.name,
+                    price: prodItem.price,
+                    product: prodItem._id,
+                  }
+                  addItemToCart(cartItem)
+                  toast.success("Item added to cart")
                 }}>Add to bag</Button>
             </div>
           ))}

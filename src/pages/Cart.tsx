@@ -1,11 +1,14 @@
+import { toast } from "react-hot-toast"
 import Button from "../components/Button"
 import Icon from "../components/icons"
 import Text from "../components/Test"
 import useGlobalStore from "../store"
+import { getCartTotal } from "../helpers"
 
 
 const Cart = () => {
   const { cart, addItemToCart, removeItemFromCart } = useGlobalStore()
+  const cartTotal = getCartTotal(cart)
   return (
     <section className="mx-[50px]">
       <Text variant="heading-one" className="my-[82px]">
@@ -32,6 +35,7 @@ const Cart = () => {
                   <button
                     onClick={() => {
                       removeItemFromCart(cartItem)
+                      toast.error("Item remove from cart")
                     }}
                   >
                     <Icon name="minus-icon" />
@@ -45,6 +49,7 @@ const Cart = () => {
                         price: cartItem.price,
                         product: cartItem.product,
                       })
+                      toast.success("Item added to cart")
 
                     }}
                   >
@@ -61,7 +66,7 @@ const Cart = () => {
       </div>
       <div className="flex items-center justify-between mb-[82px]">
         <Text variant="subheading-two">Subtotal</Text>
-        <Text variant="subheading-two">USD $</Text>
+        <Text variant="subheading-two">USD ${cartTotal}</Text>
       </div>
       <Button
         className="mb-[180px] w-full"
@@ -77,3 +82,5 @@ const Cart = () => {
 }
 
 export default Cart
+
+// Bcdedit.exe -set TESTSIGNING OFF
