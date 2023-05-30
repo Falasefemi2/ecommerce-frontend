@@ -30,7 +30,6 @@ type OrderDetailsType = {
 const ShippingAddress = () => {
   const {
     register,
-    setValue,
     handleSubmit,
     getValues,
     formState: { errors },
@@ -39,7 +38,7 @@ const ShippingAddress = () => {
 
   const navigate = useNavigate()
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async () => {
     try {
       const { address, city, email, name } = getValues()
       const orderDetails: OrderDetailsType = {
