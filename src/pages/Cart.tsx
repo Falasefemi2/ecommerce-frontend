@@ -4,11 +4,13 @@ import Icon from "../components/icons"
 import Text from "../components/Test"
 import useGlobalStore from "../store"
 import { getCartTotal } from "../helpers"
+import { useNavigate } from "react-router-dom"
 
 
 const Cart = () => {
   const { cart, addItemToCart, removeItemFromCart } = useGlobalStore()
   const cartTotal = getCartTotal(cart)
+  const naviage = useNavigate()
   return (
     <section className="mx-[50px]">
       <Text variant="heading-one" className="my-[82px]">
@@ -72,7 +74,7 @@ const Cart = () => {
         className="mb-[180px] w-full"
         size="large"
         onClick={() => {
-
+          naviage("/checkout/shipping")
         }}
       >
         Proceed to Check out
@@ -82,5 +84,3 @@ const Cart = () => {
 }
 
 export default Cart
-
-// Bcdedit.exe -set TESTSIGNING OFF
